@@ -1,0 +1,7 @@
+node_modules
+dist
+release
+.env
+server/data
+*.db
+.DS_Store

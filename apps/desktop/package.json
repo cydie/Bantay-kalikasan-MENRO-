@@ -1,0 +1,33 @@
+{
+  "name": "@bantay-kalikasan/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run build -w @bantay-kalikasan/web && electron-builder"
+  },
+  "dependencies": {
+    "sql.js": "^1.13.0"
+  },
+  "devDependencies": {
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "gov.rizal.bantay-kalikasan",
+    "productName": "Bantay Kalikasan MENRO",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "db.cjs",
+      "../web/dist/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

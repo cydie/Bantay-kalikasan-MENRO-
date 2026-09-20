@@ -1,0 +1,29 @@
+{
+  "name": "bantay-kalikasan-menro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bantay Kalikasan - MENRO Portal for Municipality of Rizal",
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,blue \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:host": "concurrently -n api,web -c green,blue \"npm run dev:api\" \"npm run dev:web -- --host\"",
+    "dev:web": "npm run dev -w @bantay-kalikasan/web",
+    "dev:api": "npm run dev -w bantay-kalikasan-server",
+    "dev:desktop": "concurrently -k \"npm run dev\" \"wait-on http://localhost:5173 && npm run start -w @bantay-kalikasan/desktop\"",
+    "build": "npm run build -w @bantay-kalikasan/web",
+    "build:desktop": "npm run build -w @bantay-kalikasan/desktop",
+    "docker:up": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "db:up": "docker compose up postgres -d",
+    "db:down": "docker compose stop postgres",
+    "seed": "npm run seed -w bantay-kalikasan-server"
+  },
+  "workspaces": [
+    "apps/*",
+    "server"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "wait-on": "^8.0.2"
+  }
+}
